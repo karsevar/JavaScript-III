@@ -56,7 +56,14 @@ GameObject.prototype.destroy = function() {
 // === CharacterStats === 
 
 function CharacterStats(charAttrs) {
-	
+	GameObject.call(this, charAttrs);
+	this.healthPoints = charAttrs.healthPoints;
+}
+
+CharacterStats.prototype = Object.create(GameObject.prototype);
+
+CharacterStats.prototype.takeDamage = function() {
+	return `${this.name} took damage!`;
 }
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
