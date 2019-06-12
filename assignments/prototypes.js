@@ -39,6 +39,26 @@
   * Instances of CharacterStats should have all of the same properties as GameObject.
 */
 
+// Solution Code:
+
+// === GameObject === 
+
+function GameObject(gameAttrs) {
+	this.createdAt = gameAttrs.createdAt;
+	this.name = gameAttrs.name;
+	this.dimensions = gameAttrs.dimensions;
+}
+
+GameObject.prototype.destroy = function() {
+	return `${this.name} was removed from the game`;
+}
+
+// === CharacterStats === 
+
+function CharacterStats(charAttrs) {
+	
+}
+
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 /*
