@@ -39,6 +39,48 @@
   * Instances of CharacterStats should have all of the same properties as GameObject.
 */
 
+// Solution Code:
+
+// === GameObject === 
+
+function GameObject(gameAttrs) {
+	this.createdAt = gameAttrs.createdAt;
+	this.name = gameAttrs.name;
+	this.dimensions = gameAttrs.dimensions;
+}
+
+GameObject.prototype.destroy = function() {
+	return `${this.name} was removed from the game`;
+}
+
+// === CharacterStats === 
+
+function CharacterStats(charAttrs) {
+	GameObject.call(this, charAttrs);
+	this.healthPoints = charAttrs.healthPoints;
+}
+
+CharacterStats.prototype = Object.create(GameObject.prototype);
+
+CharacterStats.prototype.takeDamage = function() {
+	return `${this.name} took damage!`;
+}
+
+// === Humanoid === 
+
+function Humanoid(humanAttrs) {
+	CharacterStats.call(this, humanAttrs);
+	this.team = humanAttrs.team;
+	this.weapons = humanAttrs.weapons;
+	this.language = humanAttrs.language;
+}
+
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
+Humanoid.prototype.greet = function() {
+	return `${this.name} offers a greeting in ${this.language}`
+}
+
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 /*
